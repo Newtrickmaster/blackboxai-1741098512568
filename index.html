@@ -3,171 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BulkInstaller - Install Multiple Apps at Once</title>
+    <title>BulkInstaller - Modern Software Installation Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#4F46E5',
-                        secondary: '#6366F1',
+                        primary: '#6366F1',
+                        secondary: '#8B5CF6',
+                        accent: '#F472B6',
                     },
                     fontFamily: {
-                        'sans': ['Inter', 'sans-serif'],
+                        'sans': ['"Plus Jakarta Sans"', 'sans-serif'],
                     },
                 }
             }
         }
     </script>
+    <style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        .app-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #6366F1, #F472B6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
 </head>
-<body class="font-sans bg-gray-50">
+<body class="font-sans bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
     <!-- Header -->
-    <header class="bg-white shadow-sm">
+    <header class="fixed w-full z-50 glass-effect">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="text-2xl font-bold text-primary">BulkInstaller</div>
-            <div class="flex space-x-4">
-                <a href="#" class="text-gray-600 hover:text-primary">About</a>
-                <a href="#" class="text-gray-600 hover:text-primary">Contact</a>
+            <div class="text-2xl font-bold gradient-text">BulkInstaller</div>
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-700 hover:text-primary transition-colors">Features</a>
+                <a href="#" class="text-gray-700 hover:text-primary transition-colors">About</a>
+                <a href="#" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-primary to-secondary py-20">
+    <section class="pt-32 pb-20 bg-gradient-to-r from-primary/10 to-secondary/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
-                Install Multiple Apps in One Click
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 gradient-text">
+                One Click. Multiple Apps.
             </h1>
-            <p class="text-xl text-white/90 mb-8">
-                Select your apps. Get one installer. Done.
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                Install all your essential software in one go. No ads, no toolbars, just pure efficiency.
             </p>
+            <div class="relative max-w-xl mx-auto">
+                <input type="text" placeholder="Search for apps..." class="w-full px-6 py-4 rounded-full shadow-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50">
+                <i class="fas fa-search absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            </div>
         </div>
     </section>
+
+    <!-- Category Filters -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-wrap gap-4 justify-center">
+            <button class="px-6 py-2 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors">All Apps</button>
+            <button class="px-6 py-2 rounded-full bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 transition-colors">Browsers</button>
+            <button class="px-6 py-2 rounded-full bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 transition-colors">Security</button>
+            <button class="px-6 py-2 rounded-full bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 transition-colors">Development</button>
+            <button class="px-6 py-2 rounded-full bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 transition-colors">Media</button>
+            <button class="px-6 py-2 rounded-full bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 transition-colors">Utilities</button>
+        </div>
+    </div>
 
     <!-- Apps Selection -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <!-- Web Browsers -->
         <div class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6 text-gray-800">Web Browsers</h2>
+            <h2 class="text-2xl font-semibold mb-6 text-gray-800 flex items-center">
+                <i class="fas fa-globe text-primary mr-3"></i>Web Browsers
+            </h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <label class="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-colors">
-                    <input type="checkbox" class="w-4 h-4 text-primary">
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
                     <span class="ml-3">
-                        <i class="fab fa-chrome text-2xl text-gray-600 mr-2"></i>
+                        <i class="fab fa-chrome text-2xl text-blue-500 mr-2"></i>
                         Chrome
                     </span>
                 </label>
-                <label class="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-colors">
-                    <input type="checkbox" class="w-4 h-4 text-primary">
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
                     <span class="ml-3">
-                        <i class="fab fa-firefox text-2xl text-gray-600 mr-2"></i>
+                        <i class="fab fa-firefox text-2xl text-orange-500 mr-2"></i>
                         Firefox
                     </span>
                 </label>
-                <label class="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-colors">
-                    <input type="checkbox" class="w-4 h-4 text-primary">
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
                     <span class="ml-3">
-                        <i class="fab fa-opera text-2xl text-gray-600 mr-2"></i>
+                        <i class="fab fa-opera text-2xl text-red-500 mr-2"></i>
                         Opera
                     </span>
                 </label>
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
+                    <span class="ml-3">
+                        <i class="fab fa-edge text-2xl text-blue-600 mr-2"></i>
+                        Edge
+                    </span>
+                </label>
             </div>
         </div>
 
-        <!-- Security -->
+        <!-- Development Tools -->
         <div class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6 text-gray-800">Security</h2>
+            <h2 class="text-2xl font-semibold mb-6 text-gray-800 flex items-center">
+                <i class="fas fa-code text-primary mr-3"></i>Development Tools
+            </h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <label class="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-colors">
-                    <input type="checkbox" class="w-4 h-4 text-primary">
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
                     <span class="ml-3">
-                        <i class="fas fa-shield-alt text-2xl text-gray-600 mr-2"></i>
-                        Avast
+                        <i class="fab fa-visual-studio-code text-2xl text-blue-600 mr-2"></i>
+                        VS Code
                     </span>
                 </label>
-                <label class="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-colors">
-                    <input type="checkbox" class="w-4 h-4 text-primary">
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
                     <span class="ml-3">
-                        <i class="fas fa-shield-virus text-2xl text-gray-600 mr-2"></i>
-                        AVG
+                        <i class="fab fa-git-alt text-2xl text-orange-600 mr-2"></i>
+                        Git
                     </span>
                 </label>
-                <label class="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-colors">
-                    <input type="checkbox" class="w-4 h-4 text-primary">
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
                     <span class="ml-3">
-                        <i class="fas fa-lock text-2xl text-gray-600 mr-2"></i>
-                        Malwarebytes
+                        <i class="fab fa-node-js text-2xl text-green-600 mr-2"></i>
+                        Node.js
+                    </span>
+                </label>
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
+                    <span class="ml-3">
+                        <i class="fab fa-python text-2xl text-yellow-600 mr-2"></i>
+                        Python
                     </span>
                 </label>
             </div>
         </div>
 
-        <!-- Utilities -->
+        <!-- Communication -->
         <div class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6 text-gray-800">Utilities</h2>
+            <h2 class="text-2xl font-semibold mb-6 text-gray-800 flex items-center">
+                <i class="fas fa-comments text-primary mr-3"></i>Communication
+            </h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <label class="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-colors">
-                    <input type="checkbox" class="w-4 h-4 text-primary">
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
                     <span class="ml-3">
-                        <i class="fas fa-file-archive text-2xl text-gray-600 mr-2"></i>
-                        7-Zip
+                        <i class="fab fa-discord text-2xl text-indigo-600 mr-2"></i>
+                        Discord
                     </span>
                 </label>
-                <label class="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-colors">
-                    <input type="checkbox" class="w-4 h-4 text-primary">
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
                     <span class="ml-3">
-                        <i class="fas fa-wind text-2xl text-gray-600 mr-2"></i>
-                        CCleaner
+                        <i class="fab fa-slack text-2xl text-purple-600 mr-2"></i>
+                        Slack
                     </span>
                 </label>
-                <label class="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-colors">
-                    <input type="checkbox" class="w-4 h-4 text-primary">
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
                     <span class="ml-3">
-                        <i class="fas fa-desktop text-2xl text-gray-600 mr-2"></i>
-                        TeamViewer
+                        <i class="fab fa-skype text-2xl text-blue-500 mr-2"></i>
+                        Skype
+                    </span>
+                </label>
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
+                    <span class="ml-3">
+                        <i class="fab fa-telegram text-2xl text-blue-400 mr-2"></i>
+                        Telegram
                     </span>
                 </label>
             </div>
         </div>
 
-        <!-- Download Button -->
-        <div class="text-center mt-12">
-            <button class="bg-primary hover:bg-primary/90 text-white font-semibold py-4 px-8 rounded-lg text-lg shadow-lg transform transition hover:scale-105">
-                Get Installer
-            </button>
-            <p class="mt-4 text-gray-600">No toolbars. No clicking next. Just the apps you need.</p>
+        <!-- Media Players -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6 text-gray-800 flex items-center">
+                <i class="fas fa-play-circle text-primary mr-3"></i>Media Players
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
+                    <span class="ml-3">
+                        <i class="fas fa-video text-2xl text-purple-600 mr-2"></i>
+                        VLC
+                    </span>
+                </label>
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
+                    <span class="ml-3">
+                        <i class="fas fa-music text-2xl text-green-600 mr-2"></i>
+                        Spotify
+                    </span>
+                </label>
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
+                    <span class="ml-3">
+                        <i class="fas fa-film text-2xl text-red-600 mr-2"></i>
+                        PotPlayer
+                    </span>
+                </label>
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
+                    <span class="ml-3">
+                        <i class="fas fa-photo-video text-2xl text-blue-600 mr-2"></i>
+                        K-Lite Codec
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Cloud Storage -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6 text-gray-800 flex items-center">
+                <i class="fas fa-cloud text-primary mr-3"></i>Cloud Storage
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
+                    <span class="ml-3">
+                        <i class="fab fa-dropbox text-2xl text-blue-500 mr-2"></i>
+                        Dropbox
+                    </span>
+                </label>
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
+                    <span class="ml-3">
+                        <i class="fab fa-google-drive text-2xl text-yellow-500 mr-2"></i>
+                        Google Drive
+                    </span>
+                </label>
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
+                    <span class="ml-3">
+                        <i class="fas fa-cloud-upload-alt text-2xl text-blue-600 mr-2"></i>
+                        OneDrive
+                    </span>
+                </label>
+                <label class="app-card flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer hover:border-primary transition-all duration-300">
+                    <input type="checkbox" class="w-4 h-4 text-primary rounded">
+                    <span class="ml-3">
+                        <i class="fas fa-box text-2xl text-orange-500 mr-2"></i>
+                        Box
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Download Section -->
+        <div class="text-center mt-16 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-12">
+            <div class="max-w-2xl mx-auto">
+                <h3 class="text-3xl font-bold mb-6 gradient-text">Ready to Install?</h3>
+                <p class="text-gray-600 mb-8">Get your customized installer with all selected applications. No bloatware, no ads, just what you need.</p>
+                <button class="bg-gradient-to-r from-primary to-secondary text-white font-semibold py-4 px-8 rounded-xl text-lg shadow-lg transform transition hover:scale-105 hover:shadow-xl">
+                    Generate Installer
+                </button>
+                <div class="mt-6 flex items-center justify-center space-x-8 text-sm text-gray-500">
+                    <span><i class="fas fa-shield-alt mr-2"></i>Safe & Secure</span>
+                    <span><i class="fas fa-download mr-2"></i>Fast Download</span>
+                    <span><i class="fas fa-check-circle mr-2"></i>No Bloatware</span>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12 mt-20">
+    <footer class="bg-gray-900 text-white py-16 mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">About BulkInstaller</h3>
-                    <p class="text-gray-400">The easiest, fastest way to update or install multiple apps. No toolbars. No clicking next. Just the apps you need.</p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold gradient-text mb-4">BulkInstaller</h3>
+                    <p class="text-gray-400 mb-6">The smartest way to install multiple applications. Save time and avoid unnecessary toolbars and bloatware.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white">Home</a></li>
-                        <li><a href="#" class="hover:text-white">About</a></li>
-                        <li><a href="#" class="hover:text-white">Contact</a></li>
-                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><i class="fas fa-envelope mr-2"></i> support@bulkinstaller.com</li>
-                        <li><i class="fas fa-phone mr-2"></i> +1 (555) 123-4567</li>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
                 <p>&copy; 2023 BulkInstaller. All rights reserved.</p>
             </div>
         </div>
